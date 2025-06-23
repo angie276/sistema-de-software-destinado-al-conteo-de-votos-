@@ -1,13 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package sistema;
 
-/**
- *
- * @author ASUS
- */
-public class Candidato {
+public class Candidato extends Persona {
+    private PartidoPolitico partido;
+
+    public Candidato() {
+        super();
+        partido = new PartidoPolitico();
+    }
+     
+    public Candidato(String DNI, String nombres, String apellidos, PartidoPolitico partido) {
+        super(DNI, nombres, apellidos);
+        this.partido = partido;
+    }
+    
+    
     
 }
