@@ -8,6 +8,6 @@ package sistema;
  *
  * @author ASUS
  */
-public class RegistroEleccion {
+public class RegistroPartidos {
     
 }
