@@ -2,27 +2,22 @@
 package sistema;
 import java.util.Scanner;
 public class Persona {
-    protected String DNI; 
+    protected int DNI; 
     protected String nombres;
     protected String apellidos;
 
-    public Persona() {
-        DNI = "";
-        nombres = " ";
-        apellidos = " ";
-    }
 
-    public Persona(String DNI, String nombres, String apellidos) {
+    public Persona(int DNI, String nombres, String apellidos) {
         this.DNI = DNI;
         this.nombres = nombres;
         this.apellidos = apellidos;
     }
 
-    public String getDNI() {
+    public int getDNI() {
         return DNI;
     }
 
-    public void setDNI(String DNI) {
+    public void setDNI(int DNI) {
         this.DNI = DNI;
     }
 
@@ -42,26 +37,15 @@ public class Persona {
         this.apellidos = apellidos;
     }
     
-    public String verInfo(){
+    public String verInfo(){  // preguntar 
         return "DNI: "+DNI+"\n"+
                 "Nombres: "+nombres+"\n"+
                 "Apellidos: "+apellidos;
     }
     
-    // NO RECOMENDABLE 
-    public void leer(){
-        Scanner sc = new Scanner(System.in);
-        
-        System.out.println("DNI: ");
-        DNI = sc.nextLine();
-        System.out.println("Nombres: ");
-        nombres = sc.nextLine();
-        System.out.println("Apellidos: ");
-        apellidos = sc.nextLine();
-        
-    }
     
     
+      
     
     
     

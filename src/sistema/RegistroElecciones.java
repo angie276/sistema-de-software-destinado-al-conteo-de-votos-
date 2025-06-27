@@ -1,13 +1,32 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package sistema;
 
-/**
- *
- * @author ASUS
- */
+package sistema;
+import java.util.List;
+import java.util.ArrayList;
+
 public class RegistroElecciones {
+    private List<Eleccion> Elecciones;
+
+    public RegistroElecciones() {
+        Elecciones = new ArrayList<>();
+        
+    }
+    
+    public void agregarEleccion(Eleccion nuevaEleccion){
+        if(nuevaEleccion.verificarTipoEleccion()){
+            Elecciones.add(nuevaEleccion);
+        }else{
+            System.out.println("Tipo de Elección inválido");
+        }
+    }
+    
+    public void buscarEleccion(int code){
+        for (int i = 0; i < Elecciones.size(); i++) {
+            if (Elecciones.get(i).getCodigo() == code){
+                
+                
+            }
+            
+        }
+    }
     
 }

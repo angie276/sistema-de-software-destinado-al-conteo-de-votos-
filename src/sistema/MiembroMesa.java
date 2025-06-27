@@ -2,17 +2,22 @@
 package sistema;
 
 public class MiembroMesa extends Persona{
-    private String TipoMiembro;
+    private String tipoMiembro; // presidente, secretario, vocal
 
-    public MiembroMesa() {
-        super();
-        TipoMiembro = " ";
-    }
 
-    public MiembroMesa(String DNI, String nombres, String apellidos, String TipoMiembro) {
+    public MiembroMesa(int DNI, String nombres, String apellidos, String tipoMiembro) {
         super(DNI, nombres, apellidos);
-        this.TipoMiembro = TipoMiembro;
+        this.tipoMiembro = tipoMiembro;
     }
+
+    public String getTipoMiembro() {
+        return tipoMiembro;
+    }
+
+    public void setTipoMiembro(String tipoMiembro) {
+        this.tipoMiembro = tipoMiembro;
+    }
+    
     
     
 }
