@@ -28,11 +28,11 @@ public class MesaElectoral {
         this.miembros = miembros;
     }
 
-    public ActaElectoral getActas() {
+    public ActaElectoral getActa() {
         return acta;
     }
 
-    public void setActas(ActaElectoral acta) {
+    public void setActa(ActaElectoral acta) {
         this.acta = acta;
     }
     

@@ -1,6 +1,6 @@
 
 package sistema;
-
+import java.util.List;
 public class Eleccion {
     private int codigo;
     private static int c = 1;
@@ -60,15 +60,21 @@ public class Eleccion {
         
     }
     public void informeEleccion(){
-        int totalVotantes = 0;
-        int votosNulos = 0;
-        int votosEmitidos = 0;
-        int resultadoVotosPreferenciales = 0;
-        
-        for (int i = 0; i < mesas.getActa(); i++) {
-            
-            
+ 
+        List<MesaElectoral> mesas2 = mesas.getMesas();
+        for (int i = 0; i < mesas2.size(); i++) {
+             MesaElectoral mesa = mesas2.get(i);
+             System.out.println("Código mesa electorla: "+ mesa.getIdMesa());
+             System.out.println("Número total de votantes: "+ mesa.getActa().getTotalEfectivos());
+             System.out.println("Vots Nulos: "+mesa.getActa().getVotosNulos());
+             System.out.println("Votos emitidos: "+mesa.getActa().totalVotosEmitidos());
+             System.out.println("Total votos prefrenciales: "+mesa.getActa().totalPreferenciales());
+             System.out.println("Resultados de votos Prferenciales por Candidato: ");
+             mesa.getActa().verVotosxCandidato();
+             
         }
+        
+
         
     }
 

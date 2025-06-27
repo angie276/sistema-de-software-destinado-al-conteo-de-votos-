@@ -65,7 +65,18 @@ public class ActaElectoral {
         }
          return total;  
     }
-   
+    public int totalVotosEmitidos(){
+       return totalVotosCandidatos()+ votosBlanco + votosNulos;
+    }
+    public int totalPreferenciales(){
+       int contador = 0;
+       for (int i = 0; i < resultados.size(); i++) {
+           ResultadoCandidato r = resultados.get(i);
+           contador += r.getPreferenciales();
+           
+       }
+       return contador;     
+    }
  
     public void setTotales(int registrados, int efectivos, int blancos, int nulos) {
         this.totalRegistrados = registrados;
@@ -89,6 +100,58 @@ public class ActaElectoral {
     public int getNumeroActa() {
         return numeroActa;
     }
+
+    public List<ResultadoCandidato> getResultados() {
+        return resultados;
+    }
+
+    public void setResultados(List<ResultadoCandidato> resultados) {
+        this.resultados = resultados;
+    }
+
+    public int getTotalRegistrados() {
+        return totalRegistrados;
+    }
+
+    public void setTotalRegistrados(int totalRegistrados) {
+        this.totalRegistrados = totalRegistrados;
+    }
+
+    public int getTotalEfectivos() {
+        return totalEfectivos;
+    }
+
+    public void setTotalEfectivos(int totalEfectivos) {
+        this.totalEfectivos = totalEfectivos;
+    }
+
+    public int getVotosBlanco() {
+        return votosBlanco;
+    }
+
+    public void setVotosBlanco(int votosBlanco) {
+        this.votosBlanco = votosBlanco;
+    }
+
+    public int getVotosNulos() {
+        return votosNulos;
+    }
+
+    public void setVotosNulos(int votosNulos) {
+        this.votosNulos = votosNulos;
+    }
+    public void verVotosxCandidato(){
+        for (int i = 0; i < resultados.size(); i++) {
+            ResultadoCandidato resul = resultados.get(i);
+            System.out.println("Candidato: "+resul.getCandidato().nombreCompleto()
+                    +"Partido: "+resul.getCandidato().getPartido().getNombrePartido());
+            System.out.println("Votos Preferenciales: "+resul.getPreferenciales());
+            System.out.println("Votos SImples: "+resul.getVotosSimples());
+            System.out.println("Votos Totales: "+resul.calcularVotosTotales());
+        }
+    }
+    
+
     public boolean datosCompletados(){
         return tituloDocumento != null && !tituloDocumento.isBlank()
                 && fecha != null && !fecha.isBlank() // Revisa si solo hay aespacios o vacío

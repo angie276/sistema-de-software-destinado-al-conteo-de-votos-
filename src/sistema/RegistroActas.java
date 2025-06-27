@@ -10,6 +10,14 @@ public class RegistroActas {
     public RegistroActas() {
         Actas = new ArrayList<>();
     }
+
+    public List<ActaElectoral> getActas() {
+        return Actas;
+    }
+
+    public void setActas(List<ActaElectoral> Actas) {
+        this.Actas = Actas;
+    }
     
     public int cantidadActas(){
        return Actas.size();

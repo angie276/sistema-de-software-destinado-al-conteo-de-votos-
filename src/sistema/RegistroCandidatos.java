@@ -22,6 +22,14 @@ public class RegistroCandidatos {
         }
     }
 
+    public List<Candidato> getCandidatos() {
+        return candidatos;
+    }
+
+    public void setCandidatos(List<Candidato> candidatos) {
+        this.candidatos = candidatos;
+    }
+    
     public void agregarCandidato(Candidato candidato){
         if(candidatos.size() < max){
             candidatos.add(candidato);

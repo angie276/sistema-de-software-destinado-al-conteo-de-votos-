@@ -8,6 +8,14 @@ public class RegistroPartidos {
         partidos = new ArrayList<>();
         
     }
+
+    public List<PartidoPolitico> getPartidos() {
+        return partidos;
+    }
+
+    public void setPartidos(List<PartidoPolitico> partidos) {
+        this.partidos = partidos;
+    }
     
     
     

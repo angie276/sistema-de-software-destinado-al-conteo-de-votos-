@@ -37,9 +37,9 @@ public class Persona {
         this.apellidos = apellidos;
     }
     
-    public String verInfo(){  // preguntar 
-        return "DNI: "+DNI+"\n"+
-                "Nombres: "+nombres+"\n"+
+    
+    public String nombreCompleto(){  // preguntar 
+        return "Nombres: "+nombres+"\t"+
                 "Apellidos: "+apellidos;
     }
     

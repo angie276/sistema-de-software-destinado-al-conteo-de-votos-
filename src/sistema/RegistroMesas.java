@@ -9,6 +9,14 @@ public class RegistroMesas {
     public RegistroMesas() {
         mesas = new ArrayList<>();
     }
+
+    public List<MesaElectoral> getMesas() {
+        return mesas;
+    }
+
+    public void setMesas(List<MesaElectoral> mesas) {
+        this.mesas = mesas;
+    }
     
     
 }

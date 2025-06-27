@@ -10,6 +10,14 @@ public class RegistroElecciones {
         Elecciones = new ArrayList<>();
         
     }
+
+    public List<Eleccion> getElecciones() {
+        return Elecciones;
+    }
+
+    public void setElecciones(List<Eleccion> Elecciones) {
+        this.Elecciones = Elecciones;
+    }
     
     public void agregarEleccion(Eleccion nuevaEleccion){
         if(nuevaEleccion.verificarTipoEleccion()){
