@@ -2,20 +2,16 @@
 package sistema;
 
 public class PartidoPolitico {
+    private int id;
+    private static int contador = 1; 
     private String nombrePartido;
     private String sigla;
     private String logo;
     private String representanteLegal;
     
-    public PartidoPolitico(){
-        nombrePartido = "";
-        sigla = "";
-        logo = "";
-        representanteLegal = "";
-        
-    }
 
     public PartidoPolitico(String nombrePartido, String sigla, String logo, String representanteLegal) {
+        id = contador ++; // incrementa automáticamente
         this.nombrePartido = nombrePartido;
         this.sigla = sigla;
         this.logo = logo;
@@ -53,7 +49,16 @@ public class PartidoPolitico {
     public void setRepresentanteLegal(String representanteLegal) {
         this.representanteLegal = representanteLegal;
     }
-    
+
+    public int getId() { // permite trbajar con ese dato en buscar, modificar y eliminar
+        return id;
+    }
+    public boolean datosCompletados(){
+        return nombrePartido != null && !nombrePartido.isBlank()
+                && sigla != null && !sigla.isBlank()
+                && logo != null && !logo.isBlank()
+                && representanteLegal != null && !representanteLegal.isBlank();
+    }
     
     
 }

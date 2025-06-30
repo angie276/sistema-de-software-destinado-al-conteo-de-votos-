@@ -3,10 +3,11 @@ package sistema;
 
 public class MesaElectoral {
     private int idMesa;
+    private int totalAsignados; // total de personas asiganadas a una mesa
     private RegistroMiembros miembros;
     private ActaElectoral acta;
 
-    public MesaElectoral(int idMesa, RegistroMiembros miembros, ActaElectoral acta) {
+    public MesaElectoral(RegistroMiembros miembros, ActaElectoral acta) {
         this.idMesa = idMesa;
         this.miembros = miembros;
         this.acta = acta;
@@ -14,6 +15,14 @@ public class MesaElectoral {
 
     public int getIdMesa() {
         return idMesa;
+    }
+
+    public int getTotalAsignados() {
+        return totalAsignados;
+    }
+
+    public void setTotalAsignados(int totalAsignados) {
+        this.totalAsignados = totalAsignados;
     }
 
     public void setIdMesa(int idMesa) {
@@ -36,7 +45,7 @@ public class MesaElectoral {
         this.acta = acta;
     }
     
-    
+
     
     
     

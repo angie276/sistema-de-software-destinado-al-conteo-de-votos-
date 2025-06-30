@@ -40,6 +40,12 @@ public class ResultadoCandidato {
     public int calcularVotosTotales(){
         return votosSimples + Preferenciales;
     }
+    public String detalleVotosCandidato() {
+        return "Candidato: " + candidato.getNombres() + " " + candidato.getApellidos() + 
+            "\n" + "Votos simples: " + votosSimples +
+            "\n" + "Votos preferenciales: " + Preferenciales + 
+            "\n" + "Total de votos: " + calcularVotosTotales();    
+    }
     
     
 }

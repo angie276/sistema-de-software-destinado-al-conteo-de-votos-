@@ -17,7 +17,12 @@ public class MiembroMesa extends Persona{
     public void setTipoMiembro(String tipoMiembro) {
         this.tipoMiembro = tipoMiembro;
     }
-    
+    @Override
+    public boolean datosCompletados() {
+        return DNI > 0 && nombres != null && !nombres.isBlank()
+            && apellidos != null && !apellidos.isBlank()
+            && tipoMiembro != null && !tipoMiembro.isBlank();
+    }
     
     
 }

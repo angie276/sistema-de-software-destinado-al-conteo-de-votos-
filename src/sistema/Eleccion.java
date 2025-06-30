@@ -18,6 +18,14 @@ public class Eleccion {
         mesas = new RegistroMesas(); // se inicaliza para que pueda ser utilizado más adelante
     }
 
+    public RegistroCandidatos getCandidatos() {
+        return candidatos;
+    }
+
+    public void setCandidatos(RegistroCandidatos candidatos) {
+        this.candidatos = candidatos;
+    }
+
     public int getCodigo() {
         return codigo;
     }
@@ -55,8 +63,8 @@ public class Eleccion {
     }
     public boolean datosCompletados(){
         return fecha != null && !fecha.isBlank() 
-                && tipoEleccion != null && !tipoEleccion.isBlank(); 
-                   // FALTA CANDIDATO
+                && tipoEleccion != null && !tipoEleccion.isBlank()
+                && candidatos != null && candidatos.getCandidatos().size() > 0;
         
     }
     public void informeEleccion(){
@@ -75,7 +83,7 @@ public class Eleccion {
         }
         
 
-        
+        // utilizar return (preguntar) tabla       
     }
 
     
