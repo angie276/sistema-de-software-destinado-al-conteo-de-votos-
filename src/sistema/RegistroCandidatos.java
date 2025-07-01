@@ -7,7 +7,8 @@ public class RegistroCandidatos {
     private Eleccion eleccion;
     private List<Candidato> candidatos;
     private int max;
-
+ 
+    
     public RegistroCandidatos(Eleccion eleccion) { // Recibe los datos del objeto elección creado
         this.eleccion = eleccion;
         candidatos = new ArrayList<>();

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class RegistroMesas {
     private List<MesaElectoral> mesas;
-    private final static int max = 1000;
+    private final static int MAX = 1000;
 
     public RegistroMesas() {
         mesas = new ArrayList<>();
@@ -31,7 +31,7 @@ public class RegistroMesas {
         
     }
     public String agregarMesa(MesaElectoral m){
-        if(mesas.size() < max){
+        if(mesas.size() < MAX){
             mesas.add(m);
             return "Mesa Electoral agregada";
 
@@ -39,14 +39,15 @@ public class RegistroMesas {
         return "Limite completado";
         
     }
-    public String modificarMesa(int id, MesaElectoral m1){
+    public String modificarMesa(int id, MesaElectoral nuevaMesa){
          MesaElectoral m = buscarMesa(id);
          if(m != null){
-             int t = m1.getTotalAsignados();
-             m.setTotalAsignados(t);
-             return "Cambio actualizado";
-             
-             
+             if (nuevaMesa.getMiembros() != null) {
+                 m.setMiembros(nuevaMesa.getMiembros());
+             }
+             if (nuevaMesa.getActa() != null) {
+                 m.setActa(nuevaMesa.getActa());
+             }
          }
          return "Mesa electoral no registrada";
         

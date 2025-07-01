@@ -50,7 +50,7 @@ public class RegistroElecciones {
             if (datosCompletados(nueva)) {
                 e.setFecha(nueva.getFecha());
                 e.setTipoEleccion(nueva.getTipoEleccion());
-                e.setCandidatos(nueva.getCandidatos());
+//                e.setCandidatos(nueva.getCandidatos());
                 return "Elección modificada";
             } else {
                 return "Tipo de elección inválido";

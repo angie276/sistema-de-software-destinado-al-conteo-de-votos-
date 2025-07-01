@@ -6,25 +6,16 @@ public class Eleccion {
     private static int c = 1;
     private String fecha;
     private String tipoEleccion;
-    private RegistroCandidatos candidatos;
     private RegistroMesas mesas;
 
 
-    public Eleccion(String fecha, String tipoEleccion, RegistroCandidatos candidatos) { // El operador solo ingresara estos datos 
+    public Eleccion(String fecha, String tipoEleccion) { // El operador solo ingresara estos datos 
         codigo = c++;
         this.fecha = fecha;
         this.tipoEleccion = tipoEleccion;
-        this.candidatos = candidatos;
         mesas = new RegistroMesas(); // se inicaliza para que pueda ser utilizado más adelante
     }
 
-    public RegistroCandidatos getCandidatos() {
-        return candidatos;
-    }
-
-    public void setCandidatos(RegistroCandidatos candidatos) {
-        this.candidatos = candidatos;
-    }
 
     public int getCodigo() {
         return codigo;
@@ -47,14 +38,6 @@ public class Eleccion {
         this.tipoEleccion = tipoEleccion;
     }
 
-    public RegistroMesas getMesas() {
-        return mesas;
-    }
-
-    public void setMesas(RegistroMesas mesas) {
-        this.mesas = mesas;
-    }
-    
 
     public boolean verificarTipoEleccion(){
         return tipoEleccion != null && (tipoEleccion.equalsIgnoreCase("Municipal") 
@@ -63,8 +46,7 @@ public class Eleccion {
     }
     public boolean datosCompletados(){
         return fecha != null && !fecha.isBlank() 
-                && tipoEleccion != null && !tipoEleccion.isBlank()
-                && candidatos != null && candidatos.getCandidatos().size() > 0;
+                && tipoEleccion != null && !tipoEleccion.isBlank();
         
     }
     public void informeEleccion(){
@@ -83,7 +65,6 @@ public class Eleccion {
         }
         
 
-        // utilizar return (preguntar) tabla       
     }
 
     

@@ -8,7 +8,6 @@ public class ActaElectoral {
     private String hora;
     private String lugar;
     private MesaElectoral mesa;
-    private List<MiembroMesa> miembros;
     private List<ResultadoCandidato> resultados;
     private int totalRegistrados;
     private int totalEfectivos;
@@ -21,7 +20,6 @@ public class ActaElectoral {
     private static int contadorActas = 1;
 
     public ActaElectoral() {
-        miembros = new ArrayList<>();
         resultados = new ArrayList<>();
         firmas =new ArrayList<>();
         
@@ -38,17 +36,13 @@ public class ActaElectoral {
     }
 
     
-    public ActaElectoral(List<ResultadoCandidato> resultaados, int totalRegistrados, int totalEfectivos, int votosBlanco, int votosNulos) {
+    public ActaElectoral(MesaElectoral mesa, List<ResultadoCandidato> resultaados, int totalRegistrados, int totalEfectivos, int votosBlanco, int votosNulos) {
+        this.mesa = mesa;
         this.resultados = resultaados;
         this.totalRegistrados = totalRegistrados;
         this.totalEfectivos = totalEfectivos;
         this.votosBlanco = votosBlanco;
         this.votosNulos = votosNulos;
-    }
-
-    public ActaElectoral(MesaElectoral mesa, List<MiembroMesa> miembros) {
-        this.mesa = mesa;
-        this.miembros = miembros;
     }
 
     public ActaElectoral(String observaciones, List<String> firmas, String sello) {
@@ -79,12 +73,6 @@ public class ActaElectoral {
        return contador;     
     }
  
-    public void setTotales(int registrados, int efectivos, int blancos, int nulos) {
-        this.totalRegistrados = registrados;
-        this.totalEfectivos = efectivos;
-        this.votosBlanco = blancos;
-        this.votosNulos = nulos;
-    }
 
     public void setObservaciones(String obs) {
         this.observaciones = obs;
@@ -182,13 +170,6 @@ public class ActaElectoral {
         this.mesa = mesa;
     }
 
-    public List<MiembroMesa> getMiembros() {
-        return miembros;
-    }
-
-    public void setMiembros(List<MiembroMesa> miembros) {
-        this.miembros = miembros;
-    }
 
     public String getObservaciones() {
         return observaciones;
@@ -207,7 +188,6 @@ public class ActaElectoral {
             && hora != null && !hora.isBlank()
             && lugar != null && !lugar.isBlank()
             && mesa != null
-            && miembros != null && !miembros.isEmpty()
             && resultados != null && !resultados.isEmpty()
             && totalRegistrados > 0
             && totalEfectivos > 0
@@ -218,7 +198,7 @@ public class ActaElectoral {
             && votosNulos >= 0;
     }
     
-    public void verVotosxCandidato(){ // CON RETURN 
+    public void verVotosxCandidato(){ 
         for (int i = 0; i < resultados.size(); i++) {
             ResultadoCandidato resul = resultados.get(i);
             System.out.println("Candidato: "+resul.getCandidato().nombreCompleto()

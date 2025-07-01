@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class RegistroMiembros {
     private List<MiembroMesa> miembros;
-    public static final int max = 3;
+    public static final int MAX = 3;
     
 
     public RegistroMiembros() {
@@ -35,7 +35,7 @@ public class RegistroMiembros {
     }
         
     public String agregarMiembro(MiembroMesa m){
-        if(miembros.size() < max){
+        if(miembros.size() < MAX){
             miembros.add(m);
             return "Miembro de mesa añadido";
             

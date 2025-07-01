@@ -3,7 +3,6 @@ package sistema;
 
 public class MesaElectoral {
     private int idMesa;
-    private int totalAsignados; // total de personas asiganadas a una mesa
     private RegistroMiembros miembros;
     private ActaElectoral acta;
 
@@ -15,14 +14,6 @@ public class MesaElectoral {
 
     public int getIdMesa() {
         return idMesa;
-    }
-
-    public int getTotalAsignados() {
-        return totalAsignados;
-    }
-
-    public void setTotalAsignados(int totalAsignados) {
-        this.totalAsignados = totalAsignados;
     }
 
     public void setIdMesa(int idMesa) {
@@ -43,6 +34,9 @@ public class MesaElectoral {
 
     public void setActa(ActaElectoral acta) {
         this.acta = acta;
+    }
+    public boolean datosCompletados(){
+        return miembros.getMiembros().size() == RegistroMiembros.MAX && miembros != null;
     }
     
 
