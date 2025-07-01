@@ -18,7 +18,11 @@ public class Candidato extends Persona {
         this.partido = partido;
     }
     
-    
-    
-    
+    @Override
+    public boolean datosCompletados() {
+        return DNI > 0 && nombres != null && !nombres.isBlank()
+            && apellidos != null && !apellidos.isBlank()
+            && partido != null;
+    }  
+      
 }

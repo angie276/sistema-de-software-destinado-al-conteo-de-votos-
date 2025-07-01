@@ -35,9 +35,5 @@ public class MesaElectoral {
     public void setActa(ActaElectoral acta) {
         this.acta = acta;
     }
-    
-    
-    
-    
-    
+     
 }

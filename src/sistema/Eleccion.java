@@ -49,14 +49,16 @@ public class Eleccion {
     
 
     public boolean verificarTipoEleccion(){
-        return tipoEleccion != null && (tipoEleccion.equalsIgnoreCase("Municipal") 
-                || tipoEleccion.equalsIgnoreCase("Nacional") || tipoEleccion.equalsIgnoreCase("Referendum")); // preguntar sobre la tílde
-        
+        return tipoEleccion != null &&
+               (tipoEleccion.equalsIgnoreCase("Municipal") ||
+                tipoEleccion.equalsIgnoreCase("Nacional") ||
+                tipoEleccion.equalsIgnoreCase("Referendum"));
     }
     public boolean datosCompletados(){
-        return fecha != null && !fecha.isBlank() 
-                && tipoEleccion != null && !tipoEleccion.isBlank(); 
-                   // FALTA CANDIDATO
+        return fecha != null && !fecha.isBlank() &&
+               tipoEleccion != null && !tipoEleccion.isBlank() &&
+               candidatos != null && candidatos.getCandidatos().size() > 0;
+
         
     }
     public void informeEleccion(){
@@ -73,14 +75,6 @@ public class Eleccion {
              mesa.getActa().verVotosxCandidato();
              
         }
-        
-
-        
     }
-
-    
-    
-    
-
 
 }
