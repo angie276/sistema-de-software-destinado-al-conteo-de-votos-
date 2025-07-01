@@ -10,6 +10,7 @@ public class Eleccion {
     private RegistroMesas mesas;
 
 
+
     public Eleccion(String fecha, String tipoEleccion, RegistroCandidatos candidatos) { // El operador solo ingresara estos datos 
         codigo = c++;
         this.fecha = fecha;
@@ -46,6 +47,14 @@ public class Eleccion {
     public void setMesas(RegistroMesas mesas) {
         this.mesas = mesas;
     }
+    public RegistroCandidatos getCandidatos() {
+        return candidatos;
+    }
+
+    public void setCandidatos(RegistroCandidatos candidatos) {
+        this.candidatos = candidatos;
+    }
+
     
 
     public boolean verificarTipoEleccion(){
