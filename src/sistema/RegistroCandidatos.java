@@ -3,6 +3,8 @@ package sistema;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
+import sistema.Candidato;
+import sistema.PartidoPolitico;
 public class RegistroCandidatos {
     private Eleccion eleccion;
     private List<Candidato> candidatos;
@@ -29,76 +31,76 @@ public class RegistroCandidatos {
     public void setCandidatos(List<Candidato> candidatos) {
         this.candidatos = candidatos;
     }
+    public boolean distintosDni(Candidato can){
+        for (int i = 0; i < candidatos.size(); i++) {
+            if(can.getDNI() == candidatos.get(i).getDNI()){
+                return false;
+            }
+            
+        }
+        return true;
+    }
+    public boolean datosCompletados(Candidato c4){
+        return c4  !=null && !c4.datosCompletados();
+        
+    }
     
-    public void agregarCandidato(Candidato candidato){
-        if(candidatos.size() < max){
+
+    
+    public String agregarCandidato(Candidato candidato){
+        if(candidatos.size() < max && distintosDni(candidato)){
             candidatos.add(candidato);
-            System.out.println("Candidato agregado");
+            return "Candidato agregado con código: "+candidato.getId();
             
         }else{
-            System.out.println("Límite de candidatos alcanzado");
+            return "Límite de candidatos alcanzado";
         }
         
     }
-    public int buscarCandidato(int dni){ // me permite modificar y elminar candidatos
+    public Candidato buscarCandidato(int id){ // me permite modificar y elminar candidatos
         for (int i = 0; i < candidatos.size(); i++) {
-            if(candidatos.get(i).getDNI() == dni){
-                return i; 
+            if(candidatos.get(i).getId() == id){
+                return candidatos.get(i); 
             }
             
                         
         }
-        return -1;
+        return null;
     }
     
-    public void modificarInfoCandidato(int DNI){
-        int indice = buscarCandidato(DNI);
+    public String modificarInfoCandidato(int id, Candidato c3){
+        Candidato c = buscarCandidato(id);
         
-        if(indice >= 0){
-            Candidato cand = candidatos.get(indice);
-            Scanner sc = new Scanner(System.in);
-            System.out.println("Nombre: ");
-            String nombre = sc.nextLine();
-            System.out.println("Apellido: ");
-            String apellido = sc.nextLine();
-            System.out.println("Nombre del partido: ");
-            String partido = sc.nextLine();
-            System.out.println("Sigla: ");
-            String sigla = sc.nextLine();
-            System.out.println("Logo: ");
-            String logo = sc.nextLine();
-            System.out.println("Representante legal: ");
-            String representante = sc.nextLine();
-            
-            
-            cand.setNombres(nombre);
-            cand.setApellidos(apellido);
-            PartidoPolitico partido2 = cand.getPartido();
-            partido2.setNombrePartido(nombre);
-            partido2.setLogo(logo);
-            partido2.setRepresentanteLegal(representante);
-            partido2.setSigla(sigla);
-            System.out.println("Datos modificados");
-            
-                   
+        if(c != null){
+            if(datosCompletados(c3)){
+              int dni = c3.getDNI();
+              c.setDNI(dni);
+              String nombres = c3.getNombres();
+              c.setNombres(nombres);
+              String apellidos = c3.getApellidos();
+              c.setApellidos(apellidos);
+              PartidoPolitico p = c3.getPartido();
+              c.setPartido(p);
+              return "Datos modificados!";                
+                
+            }else{
+                return "Datos imcompletos";
+            }
+                          
         }else{
-            System.out.println("Candidato no encontrado");
+            return "Candidato no encontrado";
         }
-        
-       
-        
+               
     }
     
-    public void eliminarCandidato(int dNi){
-        int i = buscarCandidato(dNi);
-        if(i > -1){
-          
-            Candidato c = candidatos.get(i);
-            candidatos.remove(c); // eliminar objeto
-            System.out.println("Candidato eliminado");
+    public String eliminarCandidato(int id){
+        Candidato i = buscarCandidato(id);
+        if(i != null){
+            candidatos.remove(i); // eliminar objeto
+            return "Candidato eliminado";
                         
         }else{
-            System.out.println("Candidato no encontrado");
+            return "Candidato no encontrado";
         }
         
         
