@@ -42,10 +42,12 @@ public class Operador extends Persona{
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
-
-    
-        
-    
-
-    
+    @Override
+    public boolean datosCompletados() {
+        return DNI > 0 && nombres != null && !nombres.isBlank()
+            && apellidos != null && !apellidos.isBlank()
+            && usuario != null && !usuario.isBlank()
+            && contraseña != null && !contraseña.isBlank()    ;
+    }  
+  
 }
