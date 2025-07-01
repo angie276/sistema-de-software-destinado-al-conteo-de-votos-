@@ -1,7 +1,5 @@
 
 package sistema;
-
-
 public class ResultadoCandidato {
     private Candidato candidato;
     private int votosSimples; // solo el partido 
@@ -39,7 +37,5 @@ public class ResultadoCandidato {
     
     public int calcularVotosTotales(){
         return votosSimples + Preferenciales;
-    }
-    
-    
+    }   
 }
