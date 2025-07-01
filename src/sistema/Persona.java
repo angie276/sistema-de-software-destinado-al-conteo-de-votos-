@@ -1,13 +1,15 @@
 
 package sistema;
-import java.util.Scanner;
-public class Persona {
+public abstract class Persona {
+    protected static int contador = 1;
+    protected int id;
     protected int DNI; 
     protected String nombres;
     protected String apellidos;
 
 
     public Persona(int DNI, String nombres, String apellidos) {
+        id = contador ++; //id único
         this.DNI = DNI;
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -42,11 +44,9 @@ public class Persona {
         return "Nombres: "+nombres+"\t"+
                 "Apellidos: "+apellidos;
     }
-    
-    
-    
-      
-    
-    
-    
+    public int getId() {
+        return id;
+    }
+    public abstract boolean datosCompletados();
+ 
 }
