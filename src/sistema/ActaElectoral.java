@@ -17,7 +17,8 @@ public class ActaElectoral {
     private String observaciones;
     private List<String> firmas;
     private String sello;
-    private int numeroActa;
+    private int numeroActa; // id de Acta
+    private static int contadorActas = 1;
 
     public ActaElectoral() {
         miembros = new ArrayList<>();
@@ -27,13 +28,13 @@ public class ActaElectoral {
         
     }
     
-    public ActaElectoral(String tituloDocumento, String fecha, String hora, String lugar, int numeroActa) {
+    public ActaElectoral(String tituloDocumento, String fecha, String hora, String lugar) {
         this(); // llamar al constructor x default
         this.tituloDocumento = tituloDocumento;
         this.fecha = fecha;
         this.hora = hora;
         this.lugar = lugar;
-        this.numeroActa = numeroActa;
+        numeroActa = contadorActas++;
     }
 
     
@@ -140,6 +141,66 @@ public class ActaElectoral {
     public void setVotosNulos(int votosNulos) {
         this.votosNulos = votosNulos;
     }
+
+    public String getTituloDocumento() {
+        return tituloDocumento;
+    }
+
+    public void setTituloDocumento(String tituloDocumento) {
+        this.tituloDocumento = tituloDocumento;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
+    public String getLugar() {
+        return lugar;
+    }
+
+    public void setLugar(String lugar) {
+        this.lugar = lugar;
+    }
+
+    public MesaElectoral getMesa() {
+        return mesa;
+    }
+
+    public void setMesa(MesaElectoral mesa) {
+        this.mesa = mesa;
+    }
+
+    public List<MiembroMesa> getMiembros() {
+        return miembros;
+    }
+
+    public void setMiembros(List<MiembroMesa> miembros) {
+        this.miembros = miembros;
+    }
+
+    public String getObservaciones() {
+        return observaciones;
+    }
+
+    public List<String> getFirmas() {
+        return firmas;
+    }
+
+    public String getSello() {
+        return sello;
+    }
     public void verVotosxCandidato(){
         for (int i = 0; i < resultados.size(); i++) {
             ResultadoCandidato resul = resultados.get(i);
@@ -167,7 +228,6 @@ public class ActaElectoral {
                 && firmas != null && !firmas.isEmpty() 
                 && sello != null && !sello.isBlank()
                 && votosBlanco >= 0 && votosNulos >= 0;
-               
     }
 
 }
