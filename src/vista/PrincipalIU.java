@@ -3,18 +3,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package vista;
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import java.awt.event.ActionEvent; //
+import java.awt.event.ActionListener; //
 
-/**
- *
- * @author ASUS
- */
+import sistema.*;
 public class PrincipalIU extends javax.swing.JFrame {
+    private RegistroElecciones elecciones;
+    private RegistroCandidatos candidatos;
+    private RegistroMesas mesas;
+    private RegistroMiembros miembros;
+    private RegistroPartidos partidos;
+    
+    
 
     /**
      * Creates new form PrincipalIU
      */
     public PrincipalIU() {
         initComponents();
+        partidos = new RegistroPartidos();
     }
 
     /**
@@ -39,35 +48,50 @@ public class PrincipalIU extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jRadioButton1 = new javax.swing.JRadioButton();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
-        btnRegistrarEleccion = new javax.swing.JButton();
         btnBuscarEleccion = new javax.swing.JButton();
         btnModificarEleccion = new javax.swing.JButton();
-        btnEliminarEleccion = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
         btnRegistrarCandidato = new javax.swing.JButton();
         btnBuscarCandidato = new javax.swing.JButton();
         btnModificarCandidato = new javax.swing.JButton();
         btnEliminarCandidato = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
         btnRegistrarMesa = new javax.swing.JButton();
         btnBuscarMesa = new javax.swing.JButton();
         btnModificarMesa = new javax.swing.JButton();
         btnEliminarMesa = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
         btnRegistrarMiembro = new javax.swing.JButton();
         btnBuscarMiembro = new javax.swing.JButton();
         btnModificarMiembro = new javax.swing.JButton();
         btnEliminarMiembro = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
         btnRegistrarActa = new javax.swing.JButton();
         btnBuscarActa = new javax.swing.JButton();
         btnModificarActa = new javax.swing.JButton();
         btnEliminarActa = new javax.swing.JButton();
-        jPanel7 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tablaInforme = new javax.swing.JTable();
+        btnEliminarEleccion2 = new javax.swing.JButton();
+        btnEliminarEleccion3 = new javax.swing.JButton();
+        btnEliminarEleccion4 = new javax.swing.JButton();
+        jPanel8 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        btnRegistrarEleccion = new javax.swing.JButton();
+        btnEliminarEleccion = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        btnRegistrarEleccion1 = new javax.swing.JButton();
+        btnEliminarEleccion1 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        btnListarPartido = new javax.swing.JButton();
+        btnGestionarPartido = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        btnRegistrarEleccion3 = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        btnRegistrarEleccion4 = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        btnRegistrarEleccion5 = new javax.swing.JButton();
+        btnEliminarEleccion5 = new javax.swing.JButton();
+        jPanel11 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -120,50 +144,9 @@ public class PrincipalIU extends javax.swing.JFrame {
 
         jRadioButton1.setText("jRadioButton1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(153, 255, 153));
-
-        btnRegistrarEleccion.setText("Registrar");
-        btnRegistrarEleccion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarEleccionActionPerformed(evt);
-            }
-        });
-
         btnBuscarEleccion.setText("Buscar");
 
         btnModificarEleccion.setText("Modificar");
-
-        btnEliminarEleccion.setText("Eliminar");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(btnRegistrarEleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
-                .addComponent(btnBuscarEleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
-                .addComponent(btnModificarEleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addComponent(btnEliminarEleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegistrarEleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarEleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnModificarEleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminarEleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(96, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Elección", jPanel1);
 
         btnRegistrarCandidato.setText("Registrar");
         btnRegistrarCandidato.addActionListener(new java.awt.event.ActionListener() {
@@ -178,35 +161,6 @@ public class PrincipalIU extends javax.swing.JFrame {
 
         btnEliminarCandidato.setText("Eliminar");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(btnRegistrarCandidato, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                .addComponent(btnBuscarCandidato, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
-                .addComponent(btnModificarCandidato, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addComponent(btnEliminarCandidato, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegistrarCandidato, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarCandidato, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnModificarCandidato, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminarCandidato, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(96, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Candidatos", jPanel2);
-
         btnRegistrarMesa.setText("Registrar");
 
         btnBuscarMesa.setText("Buscar");
@@ -214,35 +168,6 @@ public class PrincipalIU extends javax.swing.JFrame {
         btnModificarMesa.setText("Modificar");
 
         btnEliminarMesa.setText("Eliminar");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(btnRegistrarMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addComponent(btnBuscarMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                .addComponent(btnModificarMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addComponent(btnEliminarMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegistrarMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnModificarMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminarMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(97, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Mesas Electorales", jPanel3);
 
         btnRegistrarMiembro.setText("Registrar");
 
@@ -252,35 +177,6 @@ public class PrincipalIU extends javax.swing.JFrame {
 
         btnEliminarMiembro.setText("Eliminar");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(btnRegistrarMiembro, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
-                .addComponent(btnBuscarMiembro, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                .addComponent(btnModificarMiembro, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
-                .addComponent(btnEliminarMiembro, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegistrarMiembro, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarMiembro, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnModificarMiembro, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminarMiembro, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(96, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Miembros de Mesa", jPanel4);
-
         btnRegistrarActa.setText("Registrar");
 
         btnBuscarActa.setText("Buscar");
@@ -288,35 +184,6 @@ public class PrincipalIU extends javax.swing.JFrame {
         btnModificarActa.setText("Modificar");
 
         btnEliminarActa.setText("Eliminar");
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(btnRegistrarActa, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
-                .addComponent(btnBuscarActa, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
-                .addComponent(btnModificarActa, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                .addComponent(btnEliminarActa, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegistrarActa, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarActa, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnModificarActa, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminarActa, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(95, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Acta Electoral", jPanel5);
 
         tablaInforme.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -331,51 +198,330 @@ public class PrincipalIU extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(tablaInforme);
 
+        btnEliminarEleccion2.setBackground(new java.awt.Color(69, 35, 35));
+        btnEliminarEleccion2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnEliminarEleccion2.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarEleccion2.setText("Visualizar Partidos Políticos");
+
+        btnEliminarEleccion3.setBackground(new java.awt.Color(69, 35, 35));
+        btnEliminarEleccion3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnEliminarEleccion3.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarEleccion3.setText("Visualizar Elecciones");
+
+        btnEliminarEleccion4.setBackground(new java.awt.Color(69, 35, 35));
+        btnEliminarEleccion4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnEliminarEleccion4.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarEleccion4.setText("Visualizar Elecciones");
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 0, 0));
+
+        jPanel8.setBackground(new java.awt.Color(245, 239, 239));
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 773, Short.MAX_VALUE)
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 28, Short.MAX_VALUE)
+        );
+
+        jPanel9.setBackground(new java.awt.Color(245, 239, 239));
+
+        jTabbedPane1.setBackground(new java.awt.Color(204, 204, 204));
+        jTabbedPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTabbedPane1.setForeground(new java.awt.Color(0, 0, 0));
+
+        btnRegistrarEleccion.setBackground(new java.awt.Color(69, 35, 35));
+        btnRegistrarEleccion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnRegistrarEleccion.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistrarEleccion.setText("Gestionar Elección");
+        btnRegistrarEleccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarEleccionActionPerformed(evt);
+            }
+        });
+
+        btnEliminarEleccion.setBackground(new java.awt.Color(69, 35, 35));
+        btnEliminarEleccion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnEliminarEleccion.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarEleccion.setText("Visualizar Elecciones");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(82, 82, 82)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEliminarEleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRegistrarEleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(87, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addComponent(btnRegistrarEleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnEliminarEleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(79, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Elección", jPanel1);
+
+        btnRegistrarEleccion1.setBackground(new java.awt.Color(69, 35, 35));
+        btnRegistrarEleccion1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnRegistrarEleccion1.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistrarEleccion1.setText("Gestionar Candidato");
+        btnRegistrarEleccion1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarEleccion1ActionPerformed(evt);
+            }
+        });
+
+        btnEliminarEleccion1.setBackground(new java.awt.Color(69, 35, 35));
+        btnEliminarEleccion1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnEliminarEleccion1.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarEleccion1.setText("Visualizar Candidatos");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(82, 82, 82)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEliminarEleccion1, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRegistrarEleccion1, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(87, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(btnRegistrarEleccion1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnEliminarEleccion1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(73, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Candidatos", jPanel2);
+
+        btnListarPartido.setBackground(new java.awt.Color(69, 35, 35));
+        btnListarPartido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnListarPartido.setForeground(new java.awt.Color(255, 255, 255));
+        btnListarPartido.setText("Visualizar Partidos Políticos");
+        btnListarPartido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarPartidoActionPerformed(evt);
+            }
+        });
+
+        btnGestionarPartido.setBackground(new java.awt.Color(69, 35, 35));
+        btnGestionarPartido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnGestionarPartido.setForeground(new java.awt.Color(255, 255, 255));
+        btnGestionarPartido.setText("Gestionar Partido Político");
+        btnGestionarPartido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGestionarPartidoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(92, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnGestionarPartido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnListarPartido, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE))
+                .addGap(87, 87, 87))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(39, Short.MAX_VALUE)
+                .addComponent(btnGestionarPartido, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(btnListarPartido, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(76, 76, 76))
+        );
+
+        jTabbedPane1.addTab("Partido Político", jPanel3);
+
+        btnRegistrarEleccion3.setBackground(new java.awt.Color(69, 35, 35));
+        btnRegistrarEleccion3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnRegistrarEleccion3.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistrarEleccion3.setText("Gestionar Mesa Electoral");
+        btnRegistrarEleccion3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarEleccion3ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(89, Short.MAX_VALUE)
+                .addComponent(btnRegistrarEleccion3, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(78, 78, 78)
+                .addComponent(btnRegistrarEleccion3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(92, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Mesa Electoral", jPanel4);
+
+        btnRegistrarEleccion4.setBackground(new java.awt.Color(69, 35, 35));
+        btnRegistrarEleccion4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnRegistrarEleccion4.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistrarEleccion4.setText("Gestionar Miembros de Mesa");
+        btnRegistrarEleccion4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarEleccion4ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(93, Short.MAX_VALUE)
+                .addComponent(btnRegistrarEleccion4, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(76, 76, 76))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addComponent(btnRegistrarEleccion4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(95, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Miembros de Mesa", jPanel5);
+
+        btnRegistrarEleccion5.setBackground(new java.awt.Color(69, 35, 35));
+        btnRegistrarEleccion5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnRegistrarEleccion5.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistrarEleccion5.setText("Gestionar Acta Electoral");
+        btnRegistrarEleccion5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarEleccion5ActionPerformed(evt);
+            }
+        });
+
+        btnEliminarEleccion5.setBackground(new java.awt.Color(69, 35, 35));
+        btnEliminarEleccion5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnEliminarEleccion5.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarEleccion5.setText("Visualizar Actas Electorales");
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGap(82, 82, 82)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEliminarEleccion5, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRegistrarEleccion5, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(22, 22, 22)
+                .addComponent(btnRegistrarEleccion5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(btnEliminarEleccion5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Informe Detallado", jPanel7);
+        jTabbedPane1.addTab("Acta Electoral", jPanel7);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 710, Short.MAX_VALUE)
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 230, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Informe detallado", jPanel11);
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 712, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
+        );
+
+        jPanel10.setBackground(new java.awt.Color(140, 43, 43));
+
+        jLabel1.setBackground(new java.awt.Color(140, 43, 43));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 40)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Sistema de Conteo de Votos");
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 689, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -388,6 +534,41 @@ public class PrincipalIU extends javax.swing.JFrame {
     private void btnRegistrarCandidatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarCandidatoActionPerformed
 
     }//GEN-LAST:event_btnRegistrarCandidatoActionPerformed
+
+    private void btnRegistrarEleccion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarEleccion1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegistrarEleccion1ActionPerformed
+
+    private void btnListarPartidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarPartidoActionPerformed
+        // TODO add your handling code here:
+        ListarPartido_IU LF = new ListarPartido_IU(partidos);
+        LF.setVisible(true);
+        
+        
+    }//GEN-LAST:event_btnListarPartidoActionPerformed
+
+    private void btnRegistrarEleccion3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarEleccion3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegistrarEleccion3ActionPerformed
+
+    private void btnRegistrarEleccion4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarEleccion4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegistrarEleccion4ActionPerformed
+
+    private void btnRegistrarEleccion5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarEleccion5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegistrarEleccion5ActionPerformed
+
+    private void btnGestionarPartidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarPartidoActionPerformed
+        // TODO add your handling code here:
+        GestionarPartidos_IU ventana = new GestionarPartidos_IU(partidos);
+        ventana.setVisible(true);              
+        ventana.setLocationRelativeTo(null);   
+        ventana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
+        
+        
+        
+    }//GEN-LAST:event_btnGestionarPartidoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -433,8 +614,15 @@ public class PrincipalIU extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminarActa;
     private javax.swing.JButton btnEliminarCandidato;
     private javax.swing.JButton btnEliminarEleccion;
+    private javax.swing.JButton btnEliminarEleccion1;
+    private javax.swing.JButton btnEliminarEleccion2;
+    private javax.swing.JButton btnEliminarEleccion3;
+    private javax.swing.JButton btnEliminarEleccion4;
+    private javax.swing.JButton btnEliminarEleccion5;
     private javax.swing.JButton btnEliminarMesa;
     private javax.swing.JButton btnEliminarMiembro;
+    private javax.swing.JButton btnGestionarPartido;
+    private javax.swing.JButton btnListarPartido;
     private javax.swing.JButton btnModificarActa;
     private javax.swing.JButton btnModificarCandidato;
     private javax.swing.JButton btnModificarEleccion;
@@ -443,18 +631,26 @@ public class PrincipalIU extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistrarActa;
     private javax.swing.JButton btnRegistrarCandidato;
     private javax.swing.JButton btnRegistrarEleccion;
+    private javax.swing.JButton btnRegistrarEleccion1;
+    private javax.swing.JButton btnRegistrarEleccion3;
+    private javax.swing.JButton btnRegistrarEleccion4;
+    private javax.swing.JButton btnRegistrarEleccion5;
     private javax.swing.JButton btnRegistrarMesa;
     private javax.swing.JButton btnRegistrarMiembro;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
