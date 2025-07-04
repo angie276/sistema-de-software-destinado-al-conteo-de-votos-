@@ -1,4 +1,4 @@
 Integrantes:
-Matias Juro 
-Angela Huarcaya 
+Matias Juro,
+Angela Huarcaya, 
 Andres Patiño
