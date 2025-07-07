@@ -1,12 +1,12 @@
 package sistema;
 import java.util.List;
 import java.util.ArrayList;
-
+import java.util.Random;
+import java.util.Scanner;
 public class ActaElectoral {
     private String tituloDocumento;
     private String fecha;
     private String hora;
-    private String lugar;
     private MesaElectoral mesa;
     private List<ResultadoCandidato> resultados;
     private int totalRegistrados;
@@ -17,7 +17,6 @@ public class ActaElectoral {
     private List<String> firmas;
     private String sello;
     private int numeroActa; // id de Acta
-    private static int contadorActas = 1;
 
     public ActaElectoral() {
         resultados = new ArrayList<>();
@@ -26,23 +25,34 @@ public class ActaElectoral {
         
     }
     
-    public ActaElectoral(String tituloDocumento, String fecha, String hora, String lugar) {
+    public ActaElectoral(String tituloDocumento, String fecha, String hora) {
         this(); // llamar al constructor x default
         this.tituloDocumento = tituloDocumento;
         this.fecha = fecha;
         this.hora = hora;
-        this.lugar = lugar;
-        numeroActa = contadorActas++;
     }
 
-    
-    public ActaElectoral(MesaElectoral mesa, List<ResultadoCandidato> resultaados, int totalRegistrados, int totalEfectivos, int votosBlanco, int votosNulos) {
+    public ActaElectoral(String titulo, String fecha, String hora, MesaElectoral mesa,
+                         String observaciones, List<String> firmas, String sello) {
+        this();
+        this.tituloDocumento = titulo;
+        this.fecha = fecha;
+        this.hora = hora;
         this.mesa = mesa;
-        this.resultados = resultaados;
-        this.totalRegistrados = totalRegistrados;
-        this.totalEfectivos = totalEfectivos;
-        this.votosBlanco = votosBlanco;
-        this.votosNulos = votosNulos;
+        this.observaciones = observaciones;
+        this.firmas = firmas;
+        this.sello = sello;
+    }
+    
+    public ActaElectoral(MesaElectoral mesa, List<Candidato> candidatos) {
+        this(); 
+        this.mesa = mesa;
+        this.votosBlanco = generarVotosBlanco();
+        this.votosNulos = generarVotosNulos();
+        this.totalRegistrados = generarTotalRegistrados();
+        generarVotos(candidatos);
+        this.totalEfectivos = totalValidos() + votosBlanco + votosNulos;
+        
     }
 
     public ActaElectoral(String observaciones, List<String> firmas, String sello) {
@@ -50,19 +60,69 @@ public class ActaElectoral {
         this.firmas = firmas;
         this.sello = sello;
     }
-    public int totalVotosCandidatos(){ // la suma total de los votos totales por cada candidato
+    public int totalValidos(){ // la suma total de los votos totales por cada candidato
         int total = 0;
         for (int i = 0; i < resultados.size(); i++) {
             ResultadoCandidato resultado = resultados.get(i); 
-            total += resultado.calcularVotosTotales();
+            total += resultado.calcularVotosValidos();
             
             
         }
          return total;  
     }
-    public int totalVotosEmitidos(){
-       return totalVotosCandidatos()+ votosBlanco + votosNulos;
+    
+    public int generarVotosBlanco(){
+        return new Random().nextInt(50, 200);
+        
     }
+    public int generarVotosNulos(){
+        return new Random().nextInt(50, 200);
+        
+    }
+    public int generarTotalRegistrados(){
+        return new Random().nextInt(200, 400);
+    }
+    public void generarVotos(List<Candidato> candidatos){
+        Random r = new Random();
+        int asistentes = r.nextInt(totalRegistrados + 1);  
+        for (int i = 0; i < candidatos.size(); i++) {
+            int simple = r.nextInt(asistentes/(candidatos.size()+1));
+            int preferenciales = validarPreferenciales(candidatos.get(i)); 
+
+            ResultadoCandidato r2 = new ResultadoCandidato(candidatos.get(i));
+            r2.sumarVotos(simple, preferenciales);
+
+            resultados.add(r2);
+        }
+        
+    }
+    
+   public int validarPreferenciales(Candidato c){
+        Random r = new Random();
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("El candidato "+c.getNombres()+"posee votos preferenciales? (sí/no)");
+        String rpta = sc.nextLine();
+        if(rpta.equalsIgnoreCase("sí") || rpta.equalsIgnoreCase("si")){
+            return r.nextInt(11);
+        }
+        
+        return 0;
+        
+    }
+    public void mostrarVotosPreferencialesPorCandidato() {
+        for (ResultadoCandidato rc : resultados) {
+            System.out.println("Candidato: " + rc.getCandidato().getNombres());
+            System.out.println("Votos preferenciales: " + rc.getPreferenciales());
+        }
+    }
+
+    public void setNumeroActa(int numeroActa) {
+        this.numeroActa = numeroActa;
+    }
+    
+    
+    
     public int totalPreferenciales(){
        int contador = 0;
        for (int i = 0; i < resultados.size(); i++) {
@@ -154,13 +214,6 @@ public class ActaElectoral {
         this.hora = hora;
     }
 
-    public String getLugar() {
-        return lugar;
-    }
-
-    public void setLugar(String lugar) {
-        this.lugar = lugar;
-    }
 
     public MesaElectoral getMesa() {
         return mesa;
@@ -183,31 +236,23 @@ public class ActaElectoral {
         return sello;
     }
     public boolean datosCompletados() {
-    return tituloDocumento != null && !tituloDocumento.isBlank()
+        return tituloDocumento != null && !tituloDocumento.isBlank()
             && fecha != null && !fecha.isBlank()
             && hora != null && !hora.isBlank()
-            && lugar != null && !lugar.isBlank()
             && mesa != null
-            && resultados != null && !resultados.isEmpty()
-            && totalRegistrados > 0
-            && totalEfectivos > 0
             && observaciones != null && !observaciones.isBlank()
             && firmas != null && !firmas.isEmpty()
-            && sello != null && !sello.isBlank()
-            && votosBlanco >= 0
-            && votosNulos >= 0;
+            && sello != null && !sello.isBlank();
     }
-    
-    public void verVotosxCandidato(){ 
-        for (int i = 0; i < resultados.size(); i++) {
-            ResultadoCandidato resul = resultados.get(i);
-            System.out.println("Candidato: "+resul.getCandidato().nombreCompleto()
-                    +"Partido: "+resul.getCandidato().getPartido().getNombrePartido());
-            System.out.println("Votos Preferenciales: "+resul.getPreferenciales());
-            System.out.println("Votos SImples: "+resul.getVotosSimples());
-            System.out.println("Votos Totales: "+resul.calcularVotosTotales());
-        }
-    }
+    public boolean votosGenerados() {
+    return resultados != null && !resultados.isEmpty()
+        && totalRegistrados > 0
+        && totalEfectivos > 0
+        && votosBlanco >= 0
+        && votosNulos >= 0;
+}
+
+
     
 
 

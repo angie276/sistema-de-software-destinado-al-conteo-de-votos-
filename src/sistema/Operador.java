@@ -5,12 +5,14 @@ public class Operador extends Persona{
     private String usuario;
     private String contraseña;
 
-
-    public Operador(int dni, String nombres, String apellidos, String Usuario, String contraseña) {
-        super(dni, nombres, apellidos);
-        this.usuario = Usuario;
+ 
+    public Operador(String DNI, String nombres, String apellidos, String usuario, String contraseña) {
+        super(DNI, nombres, apellidos);
+        this.usuario = usuario;
         this.contraseña = contraseña;
     }
+
+    
     
     public boolean autenticar(String clave) {
         if (clave.length() != contraseña.length()){
@@ -44,7 +46,7 @@ public class Operador extends Persona{
     }
     @Override
     public boolean datosCompletados() {
-        return DNI > 0 && nombres != null && !nombres.isBlank()
+        return DNI != null && !DNI.isBlank() && nombres != null && !nombres.isBlank()
             && apellidos != null && !apellidos.isBlank()
             && usuario != null && !usuario.isBlank()
             && contraseña != null && !contraseña.isBlank()    ;

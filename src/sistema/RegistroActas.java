@@ -6,11 +6,19 @@ import java.util.List;
 
 public class RegistroActas {
     private List<ActaElectoral> Actas;
+    private int ids=1;
 
     public RegistroActas() {
         Actas = new ArrayList<>();
     }
+    public int longitud() {
+        return Actas.size();
+    }
 
+    public ActaElectoral iesimo(int i) {
+        return Actas.get(i);
+    }   
+    
     public List<ActaElectoral> getActas() {
         return Actas;
     }
@@ -31,6 +39,7 @@ public class RegistroActas {
     
     public String agregarActa(ActaElectoral nuevaActa){
         if(datosCompletados(nuevaActa)){
+            nuevaActa.setNumeroActa(ids++);
             Actas.add(nuevaActa);
             return "Acta agregada con número único: "+nuevaActa.getNumeroActa();
 
@@ -70,8 +79,7 @@ public class RegistroActas {
                 a.setFecha(fecha);
                 String hora = a2.getHora();
                 a.setHora(hora);
-                String lugar = a2.getLugar();
-                a.setLugar(lugar);
+              
                 List<ResultadoCandidato> resultados = a2.getResultados();
                 a.setResultados(resultados);
                 int totalRegistrados = a2.getTotalRegistrados();

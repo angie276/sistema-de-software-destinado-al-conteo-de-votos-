@@ -8,10 +8,17 @@ public class PartidoPolitico {
     private String sigla;
     private String logo;
     private String representanteLegal;
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public PartidoPolitico(String paraIU) {
+        this.nombrePartido = paraIU;
+    }
     
 
     public PartidoPolitico(String nombrePartido, String sigla, String logo, String representanteLegal) {
-        id = contador ++; // incrementa automáticamente
         this.nombrePartido = nombrePartido;
         this.sigla = sigla;
         this.logo = logo;
@@ -59,6 +66,9 @@ public class PartidoPolitico {
                 && logo != null && !logo.isBlank()
                 && representanteLegal != null && !representanteLegal.isBlank();
     }
-    
+    @Override
+    public String toString(){
+        return nombrePartido;
+    }
     
 }

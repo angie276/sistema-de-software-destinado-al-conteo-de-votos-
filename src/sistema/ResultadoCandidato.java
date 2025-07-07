@@ -1,18 +1,29 @@
 
 package sistema;
 
-
 public class ResultadoCandidato {
     private Candidato candidato;
     private int votosSimples; // solo el partido 
-    private int Preferenciales; //directamente al candidato
+    private int Preferenciales; //directamente al candidato  /// simples 
 
-    public ResultadoCandidato(Candidato candidato, int simples, int Preferenciales) {
-        this.candidato = candidato;
-        votosSimples = simples;
-        this.Preferenciales = Preferenciales;
+    public ResultadoCandidato() {
     }
 
+    public ResultadoCandidato(Candidato candidato) {
+        this.candidato = candidato;
+        votosSimples = 0;
+        Preferenciales = 0;
+         
+        
+    }
+    
+    public void sumarVotos(int simples, int preferenciales) {
+        this.votosSimples += simples;
+        this.Preferenciales += preferenciales;
+    }
+    
+ 
+    
     public Candidato getCandidato() {
         return candidato;
     }
@@ -37,14 +48,16 @@ public class ResultadoCandidato {
         this.Preferenciales = Preferenciales;
     }
     
-    public int calcularVotosTotales(){
+    
+    public int calcularVotosValidos(){
         return votosSimples + Preferenciales;
     }
+    
     public String detalleVotosCandidato() {
         return "Candidato: " + candidato.getNombres() + " " + candidato.getApellidos() + 
             "\n" + "Votos simples: " + votosSimples +
-            "\n" + "Votos preferenciales: " + Preferenciales + 
-            "\n" + "Total de votos: " + calcularVotosTotales();    
+            "\n" + "Votos preferenciales: " + Preferenciales +
+            "\n" + "Votos válidos: " + calcularVotosValidos();    
     }
     
     

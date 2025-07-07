@@ -5,12 +5,19 @@ import java.util.ArrayList;
 
 public class RegistroElecciones {
     private List<Eleccion> Elecciones;
+    private int ids = 1;
 
     public RegistroElecciones() {
         Elecciones = new ArrayList<>();
         
     }
+    public int longitud() {
+        return Elecciones.size();
+    }
 
+    public Eleccion iesimo(int i) {
+        return Elecciones.get(i);
+    }   
     public List<Eleccion> getElecciones() {
         return Elecciones;
     }
@@ -26,6 +33,7 @@ public class RegistroElecciones {
     
     public String  agregarEleccion(Eleccion nuevaEleccion){
         if(nuevaEleccion.verificarTipoEleccion()){
+            nuevaEleccion.setCodigo(ids++);
             Elecciones.add(nuevaEleccion);
             return "Elección agregada. Id: "+nuevaEleccion.getCodigo();
         }else{
@@ -50,7 +58,6 @@ public class RegistroElecciones {
             if (datosCompletados(nueva)) {
                 e.setFecha(nueva.getFecha());
                 e.setTipoEleccion(nueva.getTipoEleccion());
-//                e.setCandidatos(nueva.getCandidatos());
                 return "Elección modificada";
             } else {
                 return "Tipo de elección inválido";

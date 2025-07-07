@@ -3,25 +3,36 @@ package sistema;
 public abstract class Persona {
     protected static int contador = 1;
     protected int id;
-    protected int DNI; 
+    protected String DNI; 
     protected String nombres;
     protected String apellidos;
 
+    public Persona() {
+    }
 
-    public Persona(int DNI, String nombres, String apellidos) {
-        id = contador ++; // id unico asignado de manera automática
+    public Persona(String DNI, String nombres, String apellidos) {
+        this.id = id;
         this.DNI = DNI;
         this.nombres = nombres;
         this.apellidos = apellidos;
     }
 
-    public int getDNI() {
+    
+ 
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getDNI() {
         return DNI;
     }
 
-    public void setDNI(int DNI) {
+    public void setDNI(String DNI) {
         this.DNI = DNI;
     }
+
+
 
     public String getNombres() {
         return nombres;
@@ -40,9 +51,8 @@ public abstract class Persona {
     }
     
     
-    public String nombreCompleto(){  // preguntar 
-        return "Nombres: "+nombres+"\t"+
-                "Apellidos: "+apellidos;
+    public String nombreCompleto(){  
+        return nombres+" "+apellidos;
     }
 
     public int getId() {

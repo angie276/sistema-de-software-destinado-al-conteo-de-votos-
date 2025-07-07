@@ -4,25 +4,21 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class RegistroCandidatos {
-    private Eleccion eleccion;
     private List<Candidato> candidatos;
-    private int max;
- 
-    
-    public RegistroCandidatos(Eleccion eleccion) { // Recibe los datos del objeto elección creado
-        this.eleccion = eleccion;
+    private int ids = 1;
+
+    public RegistroCandidatos() {
         candidatos = new ArrayList<>();
-    
-        if(eleccion.getTipoEleccion().equalsIgnoreCase("nacional")){
-            max =  20;
-        }else if(eleccion.getTipoEleccion().equalsIgnoreCase("municipal")){
-            max =  6;
-            
-        }else{
-            max = 0;
-        }
+    }
+    public int longitud() {
+        return candidatos.size();
     }
 
+    public Candidato iesimo(int i) {
+        return candidatos.get(i);
+    }   
+    
+    
     public List<Candidato> getCandidatos() {
         return candidatos;
     }
@@ -47,7 +43,8 @@ public class RegistroCandidatos {
 
     
     public String agregarCandidato(Candidato candidato){
-        if(candidatos.size() < max && distintosDni(candidato)){
+        if(distintosDni(candidato)){
+            candidato.setId(ids++);
             candidatos.add(candidato);
             return "Candidato agregado con código: "+candidato.getId();
             
@@ -72,7 +69,7 @@ public class RegistroCandidatos {
         
         if(c != null){
             if(datosCompletados(c3)){
-              int dni = c3.getDNI();
+              String dni = c3.getDNI();
               c.setDNI(dni);
               String nombres = c3.getNombres();
               c.setNombres(nombres);
@@ -80,6 +77,8 @@ public class RegistroCandidatos {
               c.setApellidos(apellidos);
               PartidoPolitico p = c3.getPartido();
               c.setPartido(p);
+              Eleccion e = c3.getEleccion();
+              c.setEleccion(e);
               return "Datos modificados!";                
                 
             }else{

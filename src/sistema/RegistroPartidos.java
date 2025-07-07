@@ -3,17 +3,30 @@ import java.util.List;
 import java.util.ArrayList;
 public class RegistroPartidos {
     private List<PartidoPolitico> partidos;
+    private int ids= 1;
+     
 
     public RegistroPartidos() {
         partidos = new ArrayList<>();
         
     }
 
+    public List<PartidoPolitico> getPartidos() {
+        return partidos;
+    }
+     public int longitud() {
+        return partidos.size();
+    }
+
+    public PartidoPolitico iesimo(int i) {
+        return partidos.get(i);
+    }   
+    
 
     public void setPartidos(List<PartidoPolitico> partidos) {
         this.partidos = partidos;
     }
-   public boolean datosCompletados(PartidoPolitico p) {
+    public boolean datosCompletados(PartidoPolitico p) {
         return p != null && p.datosCompletados();
     }
 
@@ -26,26 +39,28 @@ public class RegistroPartidos {
         return true;
     }
 
+
     public String agregarPartido(PartidoPolitico p) {
         if (datosCompletados(p) && nombresDistintos(p)) {
+            p.setId(ids++);
             partidos.add(p);
-            return "Partido agregado exitosamente.";
+            return "Partido agregado exitosamente."+"\n"+"ID partido político: "+p.getId();
         } else {
             return "No se puede agregar: datos incompletos o nombre repetido.";
         }
     }
 
-    public PartidoPolitico buscarPartido(String nombre) {
+    public PartidoPolitico buscarPartido(int id) {
         for (PartidoPolitico p : partidos) {
-            if (p.getNombrePartido().equalsIgnoreCase(nombre)) {
+            if (p.getId() == id) {
                 return p;
             }
         }
         return null;
     }
 
-    public String modificarPartido(String nombre, PartidoPolitico nuevo) {
-        PartidoPolitico p = buscarPartido(nombre);
+    public String modificarPartido(int id, PartidoPolitico nuevo) {
+        PartidoPolitico p = buscarPartido(id);
         if (p != null) {
             if (datosCompletados(nuevo)) {
                 p.setNombrePartido(nuevo.getNombrePartido());
@@ -60,8 +75,8 @@ public class RegistroPartidos {
         }
     }
 
-    public String eliminarPartido(String nombre) {
-        PartidoPolitico p = buscarPartido(nombre);
+    public String eliminarPartido(int id) {
+        PartidoPolitico p = buscarPartido(id);
         if (p != null) {
             partidos.remove(p);
             return "Partido eliminado.";
