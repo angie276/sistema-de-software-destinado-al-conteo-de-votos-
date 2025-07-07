@@ -13,7 +13,7 @@ public class OperadorIU extends javax.swing.JFrame {
      */
     public OperadorIU() {
         initComponents(); // Crear el objeto operador 
-        operador = new Operador(456789, "Pepito", "Reyes", "op1", "2456");
+        operador = new Operador("456789", "Pepito", "Reyes", "op1", "2456");
         
         
     }

@@ -4,6 +4,7 @@
  */
 package vista;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionEvent; //
 import java.awt.event.ActionListener; //
@@ -15,7 +16,7 @@ public class PrincipalIU extends javax.swing.JFrame {
     private RegistroMesas mesas;
     private RegistroMiembros miembros;
     private RegistroPartidos partidos;
-    
+    private RegistroActas actas;
     
 
     /**
@@ -24,6 +25,12 @@ public class PrincipalIU extends javax.swing.JFrame {
     public PrincipalIU() {
         initComponents();
         partidos = new RegistroPartidos();
+        miembros = new RegistroMiembros();
+        mesas = new RegistroMesas();
+        candidatos = new RegistroCandidatos();
+        elecciones = new RegistroElecciones();
+        actas = new RegistroActas();
+        
     }
 
     /**
@@ -75,22 +82,26 @@ public class PrincipalIU extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        btnRegistrarEleccion = new javax.swing.JButton();
-        btnEliminarEleccion = new javax.swing.JButton();
+        btnGestionarEleccion = new javax.swing.JButton();
+        btnVisualizarElecciones = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        btnRegistrarEleccion1 = new javax.swing.JButton();
-        btnEliminarEleccion1 = new javax.swing.JButton();
+        btnGestionarCandidato = new javax.swing.JButton();
+        btnVisualizarCandidatos = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         btnListarPartido = new javax.swing.JButton();
         btnGestionarPartido = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        btnRegistrarEleccion3 = new javax.swing.JButton();
+        btnGestionarMesas = new javax.swing.JButton();
+        btnVisualizarMesas = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        btnRegistrarEleccion4 = new javax.swing.JButton();
+        btnGestionarMiembro = new javax.swing.JButton();
+        btnVisualizarMiembros = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
-        btnRegistrarEleccion5 = new javax.swing.JButton();
-        btnEliminarEleccion5 = new javax.swing.JButton();
+        btnGestionarActa = new javax.swing.JButton();
+        btnVisualizarActas = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
+        btnInformeMesa = new javax.swing.JButton();
+        btnInformeEleccion = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -235,20 +246,25 @@ public class PrincipalIU extends javax.swing.JFrame {
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTabbedPane1.setForeground(new java.awt.Color(0, 0, 0));
 
-        btnRegistrarEleccion.setBackground(new java.awt.Color(69, 35, 35));
-        btnRegistrarEleccion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnRegistrarEleccion.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegistrarEleccion.setText("Gestionar Elección");
-        btnRegistrarEleccion.addActionListener(new java.awt.event.ActionListener() {
+        btnGestionarEleccion.setBackground(new java.awt.Color(69, 35, 35));
+        btnGestionarEleccion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnGestionarEleccion.setForeground(new java.awt.Color(255, 255, 255));
+        btnGestionarEleccion.setText("Gestionar Elección");
+        btnGestionarEleccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarEleccionActionPerformed(evt);
+                btnGestionarEleccionActionPerformed(evt);
             }
         });
 
-        btnEliminarEleccion.setBackground(new java.awt.Color(69, 35, 35));
-        btnEliminarEleccion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnEliminarEleccion.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminarEleccion.setText("Visualizar Elecciones");
+        btnVisualizarElecciones.setBackground(new java.awt.Color(69, 35, 35));
+        btnVisualizarElecciones.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnVisualizarElecciones.setForeground(new java.awt.Color(255, 255, 255));
+        btnVisualizarElecciones.setText("Visualizar Elecciones");
+        btnVisualizarElecciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisualizarEleccionesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -257,36 +273,41 @@ public class PrincipalIU extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(82, 82, 82)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnEliminarEleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRegistrarEleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnVisualizarElecciones, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGestionarEleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(87, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(55, 55, 55)
-                .addComponent(btnRegistrarEleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnEliminarEleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addComponent(btnGestionarEleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(btnVisualizarElecciones, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Elección", jPanel1);
 
-        btnRegistrarEleccion1.setBackground(new java.awt.Color(69, 35, 35));
-        btnRegistrarEleccion1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnRegistrarEleccion1.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegistrarEleccion1.setText("Gestionar Candidato");
-        btnRegistrarEleccion1.addActionListener(new java.awt.event.ActionListener() {
+        btnGestionarCandidato.setBackground(new java.awt.Color(69, 35, 35));
+        btnGestionarCandidato.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnGestionarCandidato.setForeground(new java.awt.Color(255, 255, 255));
+        btnGestionarCandidato.setText("Gestionar Candidato");
+        btnGestionarCandidato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarEleccion1ActionPerformed(evt);
+                btnGestionarCandidatoActionPerformed(evt);
             }
         });
 
-        btnEliminarEleccion1.setBackground(new java.awt.Color(69, 35, 35));
-        btnEliminarEleccion1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnEliminarEleccion1.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminarEleccion1.setText("Visualizar Candidatos");
+        btnVisualizarCandidatos.setBackground(new java.awt.Color(69, 35, 35));
+        btnVisualizarCandidatos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnVisualizarCandidatos.setForeground(new java.awt.Color(255, 255, 255));
+        btnVisualizarCandidatos.setText("Visualizar Candidatos");
+        btnVisualizarCandidatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisualizarCandidatosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -295,18 +316,18 @@ public class PrincipalIU extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(82, 82, 82)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnEliminarEleccion1, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRegistrarEleccion1, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnVisualizarCandidatos, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGestionarCandidato, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(87, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(btnRegistrarEleccion1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnEliminarEleccion1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addGap(55, 55, 55)
+                .addComponent(btnGestionarCandidato, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(btnVisualizarCandidatos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Candidatos", jPanel2);
@@ -336,31 +357,41 @@ public class PrincipalIU extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(92, Short.MAX_VALUE)
+                .addContainerGap(82, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnGestionarPartido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnListarPartido, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE))
+                    .addComponent(btnGestionarPartido, javax.swing.GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE)
+                    .addComponent(btnListarPartido, javax.swing.GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE))
                 .addGap(87, 87, 87))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
-                .addComponent(btnGestionarPartido, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(btnListarPartido, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55)
+                .addComponent(btnGestionarPartido, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(btnListarPartido, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(76, 76, 76))
         );
 
         jTabbedPane1.addTab("Partido Político", jPanel3);
 
-        btnRegistrarEleccion3.setBackground(new java.awt.Color(69, 35, 35));
-        btnRegistrarEleccion3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnRegistrarEleccion3.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegistrarEleccion3.setText("Gestionar Mesa Electoral");
-        btnRegistrarEleccion3.addActionListener(new java.awt.event.ActionListener() {
+        btnGestionarMesas.setBackground(new java.awt.Color(69, 35, 35));
+        btnGestionarMesas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnGestionarMesas.setForeground(new java.awt.Color(255, 255, 255));
+        btnGestionarMesas.setText("Gestionar Mesa Electoral");
+        btnGestionarMesas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarEleccion3ActionPerformed(evt);
+                btnGestionarMesasActionPerformed(evt);
+            }
+        });
+
+        btnVisualizarMesas.setBackground(new java.awt.Color(69, 35, 35));
+        btnVisualizarMesas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnVisualizarMesas.setForeground(new java.awt.Color(255, 255, 255));
+        btnVisualizarMesas.setText("Visualizar Mesas Electorales");
+        btnVisualizarMesas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisualizarMesasActionPerformed(evt);
             }
         });
 
@@ -369,27 +400,41 @@ public class PrincipalIU extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(89, Short.MAX_VALUE)
-                .addComponent(btnRegistrarEleccion3, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80))
+                .addGap(82, 82, 82)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnVisualizarMesas, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGestionarMesas, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(87, 87, 87))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addComponent(btnRegistrarEleccion3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addGap(55, 55, 55)
+                .addComponent(btnGestionarMesas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(btnVisualizarMesas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Mesa Electoral", jPanel4);
 
-        btnRegistrarEleccion4.setBackground(new java.awt.Color(69, 35, 35));
-        btnRegistrarEleccion4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnRegistrarEleccion4.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegistrarEleccion4.setText("Gestionar Miembros de Mesa");
-        btnRegistrarEleccion4.addActionListener(new java.awt.event.ActionListener() {
+        btnGestionarMiembro.setBackground(new java.awt.Color(69, 35, 35));
+        btnGestionarMiembro.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnGestionarMiembro.setForeground(new java.awt.Color(255, 255, 255));
+        btnGestionarMiembro.setText("Gestionar Miembro de Mesa");
+        btnGestionarMiembro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarEleccion4ActionPerformed(evt);
+                btnGestionarMiembroActionPerformed(evt);
+            }
+        });
+
+        btnVisualizarMiembros.setBackground(new java.awt.Color(69, 35, 35));
+        btnVisualizarMiembros.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnVisualizarMiembros.setForeground(new java.awt.Color(255, 255, 255));
+        btnVisualizarMiembros.setText("Visualizar Miembros de Mesa");
+        btnVisualizarMiembros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisualizarMiembrosActionPerformed(evt);
             }
         });
 
@@ -398,34 +443,38 @@ public class PrincipalIU extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(93, Short.MAX_VALUE)
-                .addComponent(btnRegistrarEleccion4, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(76, 76, 76))
+                .addGap(82, 82, 82)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnVisualizarMiembros, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGestionarMiembro, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(87, 87, 87))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addComponent(btnRegistrarEleccion4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addGap(55, 55, 55)
+                .addComponent(btnGestionarMiembro, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(btnVisualizarMiembros, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Miembros de Mesa", jPanel5);
 
-        btnRegistrarEleccion5.setBackground(new java.awt.Color(69, 35, 35));
-        btnRegistrarEleccion5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnRegistrarEleccion5.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegistrarEleccion5.setText("Gestionar Acta Electoral");
-        btnRegistrarEleccion5.addActionListener(new java.awt.event.ActionListener() {
+        btnGestionarActa.setBackground(new java.awt.Color(69, 35, 35));
+        btnGestionarActa.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnGestionarActa.setForeground(new java.awt.Color(255, 255, 255));
+        btnGestionarActa.setText("Gestionar Acta Electoral");
+        btnGestionarActa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarEleccion5ActionPerformed(evt);
+                btnGestionarActaActionPerformed(evt);
             }
         });
 
-        btnEliminarEleccion5.setBackground(new java.awt.Color(69, 35, 35));
-        btnEliminarEleccion5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnEliminarEleccion5.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminarEleccion5.setText("Visualizar Actas Electorales");
+        btnVisualizarActas.setBackground(new java.awt.Color(69, 35, 35));
+        btnVisualizarActas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnVisualizarActas.setForeground(new java.awt.Color(255, 255, 255));
+        btnVisualizarActas.setText("Visualizar Actas Electorales");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -434,31 +483,56 @@ public class PrincipalIU extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(82, 82, 82)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnEliminarEleccion5, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRegistrarEleccion5, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnVisualizarActas, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGestionarActa, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(87, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(btnRegistrarEleccion5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(btnEliminarEleccion5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addGap(55, 55, 55)
+                .addComponent(btnGestionarActa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(btnVisualizarActas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Acta Electoral", jPanel7);
+
+        btnInformeMesa.setBackground(new java.awt.Color(69, 35, 35));
+        btnInformeMesa.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnInformeMesa.setForeground(new java.awt.Color(255, 255, 255));
+        btnInformeMesa.setText("Mesa Electoral");
+        btnInformeMesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInformeMesaActionPerformed(evt);
+            }
+        });
+
+        btnInformeEleccion.setBackground(new java.awt.Color(69, 35, 35));
+        btnInformeEleccion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnInformeEleccion.setForeground(new java.awt.Color(255, 255, 255));
+        btnInformeEleccion.setText("Elección");
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 710, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                .addContainerGap(87, Short.MAX_VALUE)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnInformeMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnInformeEleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(82, 82, 82))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 230, Short.MAX_VALUE)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addComponent(btnInformeEleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(btnInformeMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Informe detallado", jPanel11);
@@ -527,37 +601,112 @@ public class PrincipalIU extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRegistrarEleccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarEleccionActionPerformed
+    private void btnGestionarEleccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarEleccionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnRegistrarEleccionActionPerformed
+        GestionarEleccionIU GE = new GestionarEleccionIU(elecciones);
+        GE.setVisible(true);              
+        GE.setLocationRelativeTo(null);   
+        GE.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);         
+    }//GEN-LAST:event_btnGestionarEleccionActionPerformed
 
     private void btnRegistrarCandidatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarCandidatoActionPerformed
 
     }//GEN-LAST:event_btnRegistrarCandidatoActionPerformed
 
-    private void btnRegistrarEleccion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarEleccion1ActionPerformed
+    private void btnGestionarCandidatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarCandidatoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnRegistrarEleccion1ActionPerformed
+         if (partidos.getPartidos().isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                "No hay partidos registrados aún. Registra al menos uno para continuar.",
+                "Información", JOptionPane.INFORMATION_MESSAGE);
+
+            GestionarPartidos_IU gp = new GestionarPartidos_IU(partidos);
+            gp.setVisible(true);
+            gp.setLocationRelativeTo(null);
+            gp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        }else if(elecciones.getElecciones().isEmpty()){
+           JOptionPane.showMessageDialog(this,
+                "No hay elecciones registradas aún. Registra al menos uno para continuar.",
+                "Información", JOptionPane.INFORMATION_MESSAGE);
+
+            GestionarEleccionIU ge = new GestionarEleccionIU(elecciones);
+            ge.setVisible(true);
+            ge.setLocationRelativeTo(null);
+            ge.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);            
+            
+        }else {
+            GestionarCandidatosIU gc = new GestionarCandidatosIU(candidatos, partidos, elecciones);
+            gc.setVisible(true);
+            gc.setLocationRelativeTo(null);
+            gc.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        }
+    }//GEN-LAST:event_btnGestionarCandidatoActionPerformed
 
     private void btnListarPartidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarPartidoActionPerformed
         // TODO add your handling code here:
-        ListarPartido_IU LF = new ListarPartido_IU(partidos);
+        ListaPartidos_IU LF = new ListaPartidos_IU(partidos);
         LF.setVisible(true);
+        LF.setLocationRelativeTo(null);
+        LF.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
         
     }//GEN-LAST:event_btnListarPartidoActionPerformed
 
-    private void btnRegistrarEleccion3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarEleccion3ActionPerformed
+    private void btnGestionarMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarMesasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnRegistrarEleccion3ActionPerformed
+        if(elecciones.getElecciones().isEmpty()){
+           JOptionPane.showMessageDialog(this,
+                "No hay elecciones registradas aún. Registra al menos uno para continuar.",
+                "Información", JOptionPane.INFORMATION_MESSAGE);
 
-    private void btnRegistrarEleccion4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarEleccion4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRegistrarEleccion4ActionPerformed
+            GestionarEleccionIU ge = new GestionarEleccionIU(elecciones);
+            ge.setVisible(true);
+            ge.setLocationRelativeTo(null);
+            ge.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);            
+            
+        }else {
+            GestionarMesasIU gc = new GestionarMesasIU(mesas, elecciones);
+            gc.setVisible(true);
+            gc.setLocationRelativeTo(null);
+            gc.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        }        
+    }//GEN-LAST:event_btnGestionarMesasActionPerformed
 
-    private void btnRegistrarEleccion5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarEleccion5ActionPerformed
+    private void btnGestionarMiembroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarMiembroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnRegistrarEleccion5ActionPerformed
+        if (mesas.getMesas().isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                "No hay mesas registradas aún. Registra al menos una para continuar.",
+                "Información", JOptionPane.INFORMATION_MESSAGE);
+
+            GestionarMesasIU gp = new GestionarMesasIU(mesas, elecciones);
+            gp.setVisible(true);
+            gp.setLocationRelativeTo(null);
+            gp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        }else if(elecciones.getElecciones().isEmpty()){
+           JOptionPane.showMessageDialog(this,
+                "No hay elecciones registradas aún. Registra al menos uno para continuar.",
+                "Información", JOptionPane.INFORMATION_MESSAGE);
+
+            GestionarEleccionIU ge = new GestionarEleccionIU(elecciones);
+            ge.setVisible(true);
+            ge.setLocationRelativeTo(null);
+            ge.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);            
+            
+        }else {
+            GestionarMiembrosIU gc = new GestionarMiembrosIU(miembros, elecciones, mesas);
+            gc.setVisible(true);
+            gc.setLocationRelativeTo(null);
+            gc.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        }        
+        
+    }//GEN-LAST:event_btnGestionarMiembroActionPerformed
+
+    private void btnGestionarActaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarActaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGestionarActaActionPerformed
 
     private void btnGestionarPartidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarPartidoActionPerformed
         // TODO add your handling code here:
@@ -569,6 +718,45 @@ public class PrincipalIU extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btnGestionarPartidoActionPerformed
+
+    private void btnVisualizarMiembrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarMiembrosActionPerformed
+        // TODO add your handling code here:
+        ListaMiembrosIU LM = new ListaMiembrosIU(miembros);
+        LM.setVisible(true);
+        LM.setLocationRelativeTo(null);
+        LM.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
+    }//GEN-LAST:event_btnVisualizarMiembrosActionPerformed
+
+    private void btnInformeMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInformeMesaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInformeMesaActionPerformed
+
+    private void btnVisualizarCandidatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarCandidatosActionPerformed
+        // TODO add your handling code here:
+        ListaCandidatosIU LC = new ListaCandidatosIU(candidatos);
+        LC.setVisible(true);
+        LC.setLocationRelativeTo(null);
+        LC.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+         
+    }//GEN-LAST:event_btnVisualizarCandidatosActionPerformed
+
+    private void btnVisualizarEleccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarEleccionesActionPerformed
+        ListaEleccionesIU LE = new ListaEleccionesIU(elecciones);
+        LE.setVisible(true);
+        LE.setLocationRelativeTo(null);
+        LE.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                // TODO add your handling code here:
+    }//GEN-LAST:event_btnVisualizarEleccionesActionPerformed
+
+    private void btnVisualizarMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarMesasActionPerformed
+        // TODO add your handling code here:
+        ListaMesasIU LF = new ListaMesasIU(mesas);
+        LF.setVisible(true);
+        LF.setLocationRelativeTo(null);
+        LF.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                
+    }//GEN-LAST:event_btnVisualizarMesasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -613,15 +801,19 @@ public class PrincipalIU extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscarMiembro;
     private javax.swing.JButton btnEliminarActa;
     private javax.swing.JButton btnEliminarCandidato;
-    private javax.swing.JButton btnEliminarEleccion;
-    private javax.swing.JButton btnEliminarEleccion1;
     private javax.swing.JButton btnEliminarEleccion2;
     private javax.swing.JButton btnEliminarEleccion3;
     private javax.swing.JButton btnEliminarEleccion4;
-    private javax.swing.JButton btnEliminarEleccion5;
     private javax.swing.JButton btnEliminarMesa;
     private javax.swing.JButton btnEliminarMiembro;
+    private javax.swing.JButton btnGestionarActa;
+    private javax.swing.JButton btnGestionarCandidato;
+    private javax.swing.JButton btnGestionarEleccion;
+    private javax.swing.JButton btnGestionarMesas;
+    private javax.swing.JButton btnGestionarMiembro;
     private javax.swing.JButton btnGestionarPartido;
+    private javax.swing.JButton btnInformeEleccion;
+    private javax.swing.JButton btnInformeMesa;
     private javax.swing.JButton btnListarPartido;
     private javax.swing.JButton btnModificarActa;
     private javax.swing.JButton btnModificarCandidato;
@@ -630,13 +822,13 @@ public class PrincipalIU extends javax.swing.JFrame {
     private javax.swing.JButton btnModificarMiembro;
     private javax.swing.JButton btnRegistrarActa;
     private javax.swing.JButton btnRegistrarCandidato;
-    private javax.swing.JButton btnRegistrarEleccion;
-    private javax.swing.JButton btnRegistrarEleccion1;
-    private javax.swing.JButton btnRegistrarEleccion3;
-    private javax.swing.JButton btnRegistrarEleccion4;
-    private javax.swing.JButton btnRegistrarEleccion5;
     private javax.swing.JButton btnRegistrarMesa;
     private javax.swing.JButton btnRegistrarMiembro;
+    private javax.swing.JButton btnVisualizarActas;
+    private javax.swing.JButton btnVisualizarCandidatos;
+    private javax.swing.JButton btnVisualizarElecciones;
+    private javax.swing.JButton btnVisualizarMesas;
+    private javax.swing.JButton btnVisualizarMiembros;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;

@@ -10,56 +10,45 @@ package vista;
  */
 import sistema.*;
 import javax.swing.table.DefaultTableModel;
-public class ListarPartido_IU extends javax.swing.JFrame {
-    private RegistroPartidos partidos;
-    private DefaultTableModel tablaPartidos;
+public class ListaMesasIU extends javax.swing.JFrame {
+    private RegistroMesas mesas;
+    private DefaultTableModel tablaMesas;
 
     /**
-     * Creates new form ListarPartido_IU
+     * Creates new form ListaMesasIU
      */
-
-    public ListarPartido_IU(RegistroPartidos partidos) {
+    public ListaMesasIU(RegistroMesas mesas) {
         initComponents();
-        System.out.println("Cantidad de partidos: " + partidos.longitud());
+        this.mesas = mesas; 
+        tablaMesas = new DefaultTableModel();
+        
+        this.taLM.setModel(tablaMesas);
+        
+        tablaMesas.addColumn("ID Mesa");
+        tablaMesas.addColumn("Ubicación");
+        tablaMesas.addColumn("Elección ID");
 
-        this.partidos = partidos; 
-        tablaPartidos = new DefaultTableModel();
-        
-        this.taListaPartidos.setModel(tablaPartidos);
-        
-        tablaPartidos.addColumn("ID");
-        tablaPartidos.addColumn("Nombre");
-        tablaPartidos.addColumn("Representante Legal");
-        tablaPartidos.addColumn("Sigla");
-        tablaPartidos.addColumn("Logo"); 
-        rellenarDatosTabla();
-        
+        rellenarDatosTabla();                
     }
-    
     private void rellenarDatosTabla(){
         
-        for (int i = 0; i < partidos.longitud(); i++) {
-            PartidoPolitico p = partidos.iesimo(i);
-            int ID = p.getId();
-            String Nombre = p.getNombrePartido();
-            String legal = p.getRepresentanteLegal();
-            String sigla = p.getSigla();
-            String logo = "Ver logo";
+        for (int i = 0; i < mesas.longitud(); i++) {
+            MesaElectoral m = mesas.iesimo(i);
+            int ID_Mesa = m.getIdMesa();
+            String Ubicacion = m.getUbicacion();
+            String Eleccion = m.getEleccion().verInfo();
+           
 
-            String[] fila = new String[5];
-            fila[0] = String.valueOf(ID);
-            fila[1] = Nombre;
-            fila[2] = legal;
-            fila[3] = sigla;
-            fila[4] = logo;
-            System.out.println("Agregando fila: " + Nombre + " - " + sigla);
+            String[] fila = new String[3];
+            fila[0] = String.valueOf(ID_Mesa);
+            fila[1] = Ubicacion;
+            fila[2] = Eleccion;
+           
 
-            this.tablaPartidos.addRow(fila);
+            this.tablaMesas.addRow(fila);
             
         }
     }
-    
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -71,18 +60,18 @@ public class ListarPartido_IU extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        taListaPartidos = new javax.swing.JTable();
-        btnCerrar = new javax.swing.JButton();
+        taLM = new javax.swing.JTable();
+        btnCerrarC = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(30, 7, 10));
 
-        taListaPartidos.setBackground(new java.awt.Color(125, 117, 117));
-        taListaPartidos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        taListaPartidos.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        taListaPartidos.setForeground(new java.awt.Color(0, 0, 0));
-        taListaPartidos.setModel(new javax.swing.table.DefaultTableModel(
+        taLM.setBackground(new java.awt.Color(125, 117, 117));
+        taLM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        taLM.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        taLM.setForeground(new java.awt.Color(0, 0, 0));
+        taLM.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -93,17 +82,17 @@ public class ListarPartido_IU extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        taListaPartidos.setSelectionBackground(new java.awt.Color(204, 204, 204));
-        jScrollPane1.setViewportView(taListaPartidos);
+        taLM.setSelectionBackground(new java.awt.Color(204, 204, 204));
+        jScrollPane1.setViewportView(taLM);
 
-        btnCerrar.setBackground(new java.awt.Color(125, 117, 117));
-        btnCerrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnCerrar.setForeground(new java.awt.Color(0, 0, 0));
-        btnCerrar.setText("Cerrar");
-        btnCerrar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+        btnCerrarC.setBackground(new java.awt.Color(125, 117, 117));
+        btnCerrarC.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnCerrarC.setForeground(new java.awt.Color(0, 0, 0));
+        btnCerrarC.setText("Cerrar");
+        btnCerrarC.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnCerrarC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCerrarActionPerformed(evt);
+                btnCerrarCActionPerformed(evt);
             }
         });
 
@@ -112,11 +101,11 @@ public class ListarPartido_IU extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 651, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                    .addComponent(btnCerrarC, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 753, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,7 +113,7 @@ public class ListarPartido_IU extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                .addComponent(btnCerrarC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -144,10 +133,10 @@ public class ListarPartido_IU extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+    private void btnCerrarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarCActionPerformed
         // TODO add your handling code here:
         this.dispose();
-    }//GEN-LAST:event_btnCerrarActionPerformed
+    }//GEN-LAST:event_btnCerrarCActionPerformed
 
     /**
      * @param args the command line arguments
@@ -166,29 +155,29 @@ public class ListarPartido_IU extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListarPartido_IU.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListaMesasIU.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListarPartido_IU.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListaMesasIU.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListarPartido_IU.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListaMesasIU.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListarPartido_IU.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListaMesasIU.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                RegistroPartidos partidos2 = new RegistroPartidos();
-                new ListarPartido_IU(partidos2).setVisible(true);
+                RegistroMesas m = new RegistroMesas();
+                new ListaMesasIU(m).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCerrar;
+    private javax.swing.JButton btnCerrarC;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable taListaPartidos;
+    private javax.swing.JTable taLM;
     // End of variables declaration//GEN-END:variables
 }

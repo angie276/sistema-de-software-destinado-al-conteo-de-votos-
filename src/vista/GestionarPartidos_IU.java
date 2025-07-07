@@ -8,19 +8,21 @@ package vista;
  *
  * @author ASUS
  */
+import javax.swing.ImageIcon; 
 import java.awt.Image;
+
 import java.net.MalformedURLException;
 import java.net.URL; 
-import javax.swing.ImageIcon; 
 
 import javax.swing.JOptionPane;
 
 import sistema.RegistroPartidos;
 import sistema.PartidoPolitico;
 
+
 public class GestionarPartidos_IU extends javax.swing.JFrame {
     private RegistroPartidos partidos;
-    private boolean modificar = false;
+    
 
     /**
      * Creates new form GestionarPartidos_IU
@@ -154,7 +156,7 @@ public class GestionarPartidos_IU extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Sigla:");
 
-        btnGuardarRegistro.setBackground(new java.awt.Color(204, 204, 204));
+        btnGuardarRegistro.setBackground(new java.awt.Color(140, 43, 43));
         btnGuardarRegistro.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnGuardarRegistro.setForeground(new java.awt.Color(0, 0, 0));
         btnGuardarRegistro.setText("Guardar");
@@ -299,7 +301,7 @@ public class GestionarPartidos_IU extends javax.swing.JFrame {
 
         lbLogo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        btnActualizarBusqueda.setBackground(new java.awt.Color(204, 204, 204));
+        btnActualizarBusqueda.setBackground(new java.awt.Color(140, 43, 43));
         btnActualizarBusqueda.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnActualizarBusqueda.setForeground(new java.awt.Color(0, 0, 0));
         btnActualizarBusqueda.setText("Actualizar");
@@ -451,7 +453,7 @@ public class GestionarPartidos_IU extends javax.swing.JFrame {
 
         txtLogoModificar.setColumns(35);
 
-        btnModificar.setBackground(new java.awt.Color(204, 204, 204));
+        btnModificar.setBackground(new java.awt.Color(140, 43, 43));
         btnModificar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnModificar.setForeground(new java.awt.Color(0, 0, 0));
         btnModificar.setText("Insertar ID para modificar");
@@ -577,7 +579,7 @@ public class GestionarPartidos_IU extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("ID de candidato");
 
-        btnEliminar.setBackground(new java.awt.Color(204, 204, 204));
+        btnEliminar.setBackground(new java.awt.Color(140, 43, 43));
         btnEliminar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(0, 0, 0));
         btnEliminar.setText("Eliminar");
@@ -738,9 +740,12 @@ public class GestionarPartidos_IU extends javax.swing.JFrame {
             ImageIcon icon = new ImageIcon(url); 
             
             Image logo = icon.getImage();
-            Image medidas = logo.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-               
-            lbLogo.setIcon(icon); 
+            int ancho = lbLogo.getWidth();
+            int alto = lbLogo.getHeight();
+            
+            Image medidas = logo.getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
+            lbLogo.setIcon(new ImageIcon(medidas));
+
             lbLogo.setText("");  
         } catch (MalformedURLException error) {
             lbLogo.setText("No se pudo cargar el logo");
@@ -789,12 +794,23 @@ public class GestionarPartidos_IU extends javax.swing.JFrame {
         btnModificar.setText("Insertar ID para modificar");
         btnModificar.setEnabled(false);
 
-        modificar = false;
     }
 
     
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        rModificar();
+        int id = Integer.parseInt(txtIDPartido.getText());
+        PartidoPolitico a = partidos.buscarPartido(id);
+
+        if (a != null) {
+            partidos.modificarPartido(id, a);
+
+            JOptionPane.showMessageDialog(this, "Partido modificado correctamente");
+
+            rModificar(); 
+
+        } else {
+            JOptionPane.showMessageDialog(this, "No se pudo modificar el partido");
+        }
 
     }//GEN-LAST:event_btnModificarActionPerformed
 
@@ -814,7 +830,6 @@ public class GestionarPartidos_IU extends javax.swing.JFrame {
             txtLogoModificar.setText(a.getLogo());
             txtLegalModificar.setText(a.getRepresentanteLegal());
 
-            modificar = true; 
             btnModificar.setText("Guardar cambios");
             btnModificar.setEnabled(true);
          }else{
@@ -853,7 +868,7 @@ public class GestionarPartidos_IU extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 RegistroPartidos registro = new RegistroPartidos();
-                new GestionarPartidos_IU(registro).setVisible(false);
+                new GestionarPartidos_IU(registro).setVisible(true);
             }
         });
     }
